@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
                                        Toast.makeText(MainActivity.this,"You have clicked on floating button",Toast.LENGTH_LONG).show();
                                    }
                                }
-
         );
 
     }
