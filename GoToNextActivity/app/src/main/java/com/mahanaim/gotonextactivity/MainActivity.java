@@ -1,8 +1,9 @@
-package com.mahanaim.floatingactionbuttondemo;
+package com.mahanaim.gotonextactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +11,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 public class MainActivity extends AppCompatActivity {
 
-    FloatingActionButton fab;
+    Button gotoNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +25,15 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View v) {
-                                       Toast.makeText(MainActivity.this,"You have clicked on floating button",Toast.LENGTH_LONG).show();
-                                   }
-                               }
-        );
 
+        gotoNext = findViewById(R.id.gotoNext);
+
+        gotoNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

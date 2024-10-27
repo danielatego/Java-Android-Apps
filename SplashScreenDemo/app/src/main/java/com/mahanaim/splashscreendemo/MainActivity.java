@@ -1,8 +1,8 @@
-package com.mahanaim.floatingactionbuttondemo;
+package com.mahanaim.splashscreendemo;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
+import android.os.Handler;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +10,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 public class MainActivity extends AppCompatActivity {
 
-    FloatingActionButton fab;
+    public static int SPLASH_TIMER = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +24,13 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View v) {
-                                       Toast.makeText(MainActivity.this,"You have clicked on floating button",Toast.LENGTH_LONG).show();
-                                   }
-                               }
-        );
-
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        },SPLASH_TIMER);
     }
 }
